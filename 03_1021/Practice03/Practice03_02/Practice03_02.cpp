@@ -1,20 +1,52 @@
-// Practice03_02.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
 
-#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string>
+
+#include "Base.h"
+#include "Player.h"
+#include "Enemy.h"
+
+// ステータス表示
+void PrintStatus( std::string name, Base* target );
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	Player player;
+	player.SetMoveSpeed(5.0f);
+
+	Enemy enemy;
+	enemy.SetHp(100);
+
+	Base* pBase = nullptr;
+
+	printf("-------------\n");
+	printf("PRACTICE03_02\n");
+	printf("-------------\n");
+
+	pBase = &player;
+	PrintStatus( "Player", pBase );
+
+	pBase = &enemy;
+	PrintStatus("Enemy", pBase);
+
+	system("pause");
+	return 0;
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
+// ステータス表示
+void PrintStatus(std::string name, Base* target)
+{
+	if(target == nullptr)
+	{
+		return;
+	}
 
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+	printf("%s Status\n", name.c_str());
+	printf("hp = %d\n", target->GetHp());
+	printf("PosX = %0.2f\n", target->GetPosX());
+	printf("PosY = %0.2f\n", target->GetPosY());
+	printf("MoveSpeed = %0.2f\n", target->GetMoveSpeed());
+	printf("\n");
+}
+
