@@ -18,5 +18,8 @@
     <ClInclude Include="Shot.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="File.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
